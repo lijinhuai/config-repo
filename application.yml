@@ -1,0 +1,43 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    name: test
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@172.16.87.129:1521:szwechat
+    username: guangda
+    password: cyber
+
+#    url: jdbc:oracle:thin:@182.18.0.3:1521:szzhpt
+#    username: guangda
+#    password: guangda!2#
+
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/**/*.xml
+  type-aliases-package: cn.com.cybertech.bootframe.model
+
+logging:
+  level:
+  org.hibernate: ERROR
+  org.springframework : DEBUG
+
+  path: /logs
+  file: myapp.log
